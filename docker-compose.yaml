@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
       target: bolt-ai-production
       args: # <--- ADICIONADO
-        NODE_OPTIONS: --max-old-space-size=4096 # <--- ADICIONADO (comece com 4096, aumente se necessário)
+        NODE_OPTIONS: --max-old-space-size=8192 # <--- ADICIONADO (comece com 4096, aumente se necessário)
     ports:
       - '5173:5173'
     env_file: '.env.local'
