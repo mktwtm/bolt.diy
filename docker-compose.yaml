@@ -5,6 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
       target: bolt-ai-production
+      args: # <--- ADICIONADO
+        NODE_OPTIONS: --max-old-space-size=4096 # <--- ADICIONADO (comece com 4096, aumente se necessário)
     ports:
       - '5173:5173'
     env_file: '.env.local'
@@ -37,6 +39,9 @@ services:
     image: bolt-ai:development
     build:
       target: bolt-ai-development
+      # Se você também precisar de mais memória para o build de desenvolvimento, adicione args aqui também:
+      # args:
+      #   NODE_OPTIONS: --max-old-space-size=4096
     env_file: '.env.local'
     environment:
       - NODE_ENV=development
